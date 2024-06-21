@@ -34,7 +34,7 @@ const Header = () => {
               About
             </li>
           </Link>
-          <Link to={"/signin"}>
+          <Link to={"/sign-up"}>
             {" "}
             <li className="text-slate-700  cursor-pointer">Sign In</li>
           </Link>
