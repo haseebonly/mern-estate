@@ -1,9 +1,7 @@
-import bcryptjs from "bcryptjs";
-import User from "../modals/user.modal.js";
-import { errorHandler } from "../utils/error.js";
+import User from '../models/user.modal.js';
+import bcryptjs from 'bcryptjs';
+import { errorHandler } from '../utils/error.js';
 import jwt from 'jsonwebtoken';
-
-
 
 export const signup = async (req, res, next) => {
   const { username, email, password } = req.body;
@@ -34,7 +32,6 @@ export const signin = async (req, res, next) => {
     next(error);
   }
 };
-
 
 export const google = async (req, res, next) => {
   try {
@@ -67,6 +64,15 @@ export const google = async (req, res, next) => {
         .status(200)
         .json(rest);
     }
+  } catch (error) {
+    next(error);
+  }
+};
+
+export const signOut = async (req, res, next) => {
+  try {
+    res.clearCookie('access_token');
+    res.status(200).json('User has been logged out!');
   } catch (error) {
     next(error);
   }
